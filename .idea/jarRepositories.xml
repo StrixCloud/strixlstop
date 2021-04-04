@@ -17,6 +17,11 @@
       <option name="url" value="https://repo.codemc.io/repository/maven-public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="mojang-repo" />
+      <option name="name" value="mojang-repo" />
+      <option name="url" value="https://libraries.minecraft.net" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="local-maven-repository" />
       <option name="name" value="local-maven-repository" />
       <option name="url" value="file://D:\Documents\Games\Java Development\Projects\StrixLSTop/libs/" />

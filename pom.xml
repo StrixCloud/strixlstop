@@ -65,11 +65,6 @@
             <url>https://repo.codemc.io/repository/maven-public/</url>
         </repository>
 
-        <repository>
-            <id>local-maven-repo</id>
-            <url>file:///${project.basedir}/libs</url>
-        </repository>
-
     </repositories>
 
     <dependencies>

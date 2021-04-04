@@ -17,22 +17,22 @@ public class TopDonatorsCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         var toOrder = new ArrayList<Orderable>(AccountsDAO.getInstance().get());
         var accounts = OrderByASC.getInstance().order(toOrder);
-        var message = Messages.TOP_DONATOR_HEADER.getListMessage()
+        StringBuilder message = new StringBuilder(Messages.TOP_DONATOR_HEADER.getListMessage()
                 .stream()
                 .map(m -> m + "\n")
-                .reduce("", String::concat);
+                .reduce("", String::concat));
 
         for (var obj : accounts) {
             var acc = (TopAccount) obj;
-            message += Messages.TOP_DONATOR_VALUE.getMessage().replace("@player", acc.getPlayer()).replace("@value", String.valueOf(acc.getValue())) + "\n";
+            message.append(Messages.TOP_DONATOR_VALUE.getMessage().replace("@player", acc.getPlayer()).replace("@value", String.valueOf(acc.getValue()))).append("\n");
         }
 
-        message += Messages.TOP_DONATOR_FOOTER.getListMessage()
+        message.append(Messages.TOP_DONATOR_FOOTER.getListMessage()
                 .stream()
                 .map(m -> m + "\n")
-                .reduce("", String::concat);
+                .reduce("", String::concat));
 
-        sender.sendMessage(message);
+        sender.sendMessage(message.toString());
 
         return false;
     }
