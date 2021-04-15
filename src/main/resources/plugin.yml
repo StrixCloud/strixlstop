@@ -2,6 +2,7 @@ name: ${project.name}
 main: br.com.strixcloud.lstop.StrixLSTop
 version: ${project.version}
 author: StrixCloud
+load: POSTWORLD
 softdepend:
   - Legendchat
   - nChat
