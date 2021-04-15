@@ -31,7 +31,7 @@ public class HDPlacedHologram implements IPlacedHologram {
 
     @Override
     public void append(String content) {
-        if (content.length() > 0) holo.appendTextLine(content);
+        holo.appendTextLine(content);
     }
 
     @Override

@@ -9,12 +9,22 @@ import br.com.strixcloud.lstop.provider.config.IDisplayProvider;
 import lombok.AllArgsConstructor;
 import lombok.var;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Locale;
 
 @AllArgsConstructor
 public class HologramSetupService {
 
     private final IDisplayProvider displayProvider;
+
+    private final DecimalFormat decimalFormatter = new DecimalFormat(
+            "#,###.##",
+            new DecimalFormatSymbols(
+                    new Locale("pt", "BR")
+            )
+    );
 
     public void execute(IPlacedHologram hologram) {
         hologram.clear();
@@ -31,12 +41,12 @@ public class HologramSetupService {
                 var acc = (TopAccount) accounts.get(i);
                 if (acc != null) {
                     line = holoData.getContentValid()
-                            .replace("@value", String.valueOf(acc.getValue()))
+                            .replace("@value", decimalFormatter.format(acc.getValue()))
                             .replace("@player", acc.getPlayer());
                 }
             }
 
-            hologram.append(line);
+            if (line.length() > 0) hologram.append(line);
         }
 
         holoData.getFooter().forEach(hologram::append);
