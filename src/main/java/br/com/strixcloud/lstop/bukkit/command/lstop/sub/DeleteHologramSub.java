@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 public class DeleteHologramSub extends SubCommand {
 
     public DeleteHologramSub() {
-        super("deletehologram", "", "strixlstop.delete");
+        super("deletehologram", "", "strixlstop.delete", "deletar", "delete", "remover");
     }
 
     @Override

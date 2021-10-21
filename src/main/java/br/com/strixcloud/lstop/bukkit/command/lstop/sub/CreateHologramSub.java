@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class CreateHologramSub extends SubCommand {
 
     public CreateHologramSub() {
-        super("createhologram", "", "strixlstop.create");
+        super("createhologram", "", "strixlstop.create", "set", "setar");
     }
 
     @Override

@@ -15,6 +15,7 @@ import br.com.strixcloud.lstop.provider.log.IStrixLogger;
 import br.com.strixcloud.lstop.provider.log.impl.StrixLogger;
 import br.com.strixcloud.lstop.provider.lojasquare.ILSProvider;
 import br.com.strixcloud.lstop.provider.lojasquare.impl.HttpLSProvider;
+import br.com.strixcloud.lstop.provider.lojasquare.impl.LSVersion;
 import br.com.strixcloud.lstop.provider.request.IRequestProvider;
 import br.com.strixcloud.lstop.provider.request.impl.HttpRequestProvider;
 import br.com.strixcloud.lstop.services.hologram.load.HologramLoadController;
@@ -105,7 +106,8 @@ public class StrixLSTop extends JavaPlugin {
         requestProvider = new HttpRequestProvider();
         sLogger = new StrixLogger(this, configFile);
         var authToken = configFile.getConfig().getString("Lojasquare.secret-key");
-        lsProvider = new HttpLSProvider(requestProvider, authToken);
+        var version = LSVersion.valueOf(configFile.getConfig().getString("Lojasquare.api-version").toUpperCase());
+        lsProvider = new HttpLSProvider(requestProvider, authToken, version);
     }
 
     private void setupDisplay() {

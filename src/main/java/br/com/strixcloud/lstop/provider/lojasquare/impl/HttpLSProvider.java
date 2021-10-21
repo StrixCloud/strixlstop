@@ -17,17 +17,19 @@ import java.util.Map;
 public class HttpLSProvider implements ILSProvider {
 
     private final IRequestProvider provider;
+    protected final String url;
 
-    public HttpLSProvider(IRequestProvider provider, String authKey) {
+    public HttpLSProvider(IRequestProvider provider, String authKey, LSVersion version) {
         this.provider = provider;
         provider.auth(authKey);
+        this.url = version.getUrl();
     }
 
     @Override
     public List<TopAccount> getAccounts() throws IOException {
         List<TopAccount> topAccounts = new ArrayList<>();
         var res = provider
-                .get("https://api.lojasquare.com.br//v1/transacoes/topCompradores");
+                .get(url);
 
         // Gambiarra anti erro kkkk, de certa forma funciona bem.
         // Gambiarra a gente aceita, oque não aceitamos é a derrota.

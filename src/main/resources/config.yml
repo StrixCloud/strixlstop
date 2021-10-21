@@ -9,6 +9,8 @@ Lojasquare:
   # Esse plugin NÃO coleta NENHUMA informação sua!
   # Preencha esse valor com a sua secret-key encontrada em: https://painel.lojasquare.com.br/conta/criarkey
   secret-key: 'SUA_SECRET_KEY'
+  # Versão da API: LS_V1 OU LS_V2
+  api-version: 'LS_V2'
 
 # Configuração dos debugs dos plugins strix
 Debug:
