@@ -106,6 +106,10 @@ public class StrixLSTop extends JavaPlugin {
         requestProvider = new HttpRequestProvider();
         sLogger = new StrixLogger(this, configFile);
         var authToken = configFile.getConfig().getString("Lojasquare.secret-key");
+        if (!configFile.getConfig().contains("Lojasquare.api-version")) {
+            configFile.getConfig().set("Lojasquare.api-version", "LS_V1");
+            configFile.saveConfig();
+        }
         var version = LSVersion.valueOf(configFile.getConfig().getString("Lojasquare.api-version").toUpperCase());
         lsProvider = new HttpLSProvider(requestProvider, authToken, version);
     }
